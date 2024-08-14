@@ -108,16 +108,23 @@ async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
         os.remove(downloader.filename)
 
 async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if (update.message.from_user.id == ADMIN_ID):
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+        return
+    
+    try:
+        users_amount = db_manager.get_total_users()
+    except exceptions.SQLiteError:
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="⚠️ Something went wrong.")
+    else:
     text = f"""
     📊 Bot Statistics
 
-    Total Users: {db_manager.get_total_users()}
+    Total Users: {users_amount}
     Total Downloads: {AudioDownloader.download_count}
     """
-    if (update.message.from_user.id == ADMIN_ID):
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
-    else:
-        await context.bot.send_message(chat_id=update.effective_chat.id, text="You're not authorized to view this information.")
+    
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="You're not authorized to view this information.")
 
 
 async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):

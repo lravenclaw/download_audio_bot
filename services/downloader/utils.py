@@ -46,7 +46,7 @@ class AudioDownloader:
     def _download(self, url):
         try:    
             self._download_audio(url)
-            dowload_count += 1
+            AudioDownloader.download_count += 1
         except:
             raise exceptions.DownloadError
 

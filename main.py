@@ -67,7 +67,6 @@ async def register(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
 
 async def reset(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     try:
         db_manager.delete(update.effective_chat.id)
     except exceptions.SQLiteError:
@@ -108,8 +107,8 @@ async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
         os.remove(downloader.filename)
 
 async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if (update.message.from_user.id == ADMIN_ID):
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+    if (update.message.from_user.id != int(ADMIN_ID)):
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="You're not authorized to view this information.")
         return
     
     try:
@@ -121,10 +120,10 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         📊 Bot Statistics
 
         Total Users: {users_amount}
-        Total Downloads: {AudioDownloader.download_count}
+        Downloads after deploy : {AudioDownloader.download_count}
         """
-    
-        await context.bot.send_message(chat_id=update.effective_chat.id, text="You're not authorized to view this information.")
+        
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):

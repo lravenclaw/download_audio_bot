@@ -10,7 +10,7 @@ from Crypto.Util.Padding import pad, unpad
 
 class CryptoHasher:
     def __init__(self):
-        self.key = DB_HASH_KEY
+        self.key = DB_HASH_KEY.encode()
 
     def encrypt(self, text):
         # Create an AES cipher object with the key and AES.MODE_ECB mode

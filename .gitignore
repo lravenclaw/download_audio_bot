@@ -4,6 +4,9 @@ tmp/*
 #local env
 setenv.sh
 
+#sqlite3 db
+users.db 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

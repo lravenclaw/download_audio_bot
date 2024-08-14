@@ -1,0 +1,10 @@
+python-telegram-bot==21.1.1
+requests==2.31.0
+future>=0.16.0
+certifi
+tornado>=5.1
+yt-dlp
+ffmpeg
+PhantomJS
+mysql-connector-python>=8.0.19
+PyCryptodome

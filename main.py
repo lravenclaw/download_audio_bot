@@ -117,14 +117,14 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except exceptions.SQLiteError:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="⚠️ Something went wrong.")
     else:
-    text = f"""
-    📊 Bot Statistics
+        text = f"""
+        📊 Bot Statistics
 
-    Total Users: {users_amount}
-    Total Downloads: {AudioDownloader.download_count}
-    """
+        Total Users: {users_amount}
+        Total Downloads: {AudioDownloader.download_count}
+        """
     
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="You're not authorized to view this information.")
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="You're not authorized to view this information.")
 
 
 async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):

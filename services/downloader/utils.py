@@ -39,6 +39,7 @@ class AudioDownloader:
             'outtmpl':self.filename,
             'username':self.account['username'],
             'password':self.account['password'],
+            'cookiesfrombrowser':
         }
         with youtube_dl.YoutubeDL(options) as ydl:
             ydl.download([video_info['webpage_url']])

@@ -2,8 +2,6 @@ import exceptions
 import requests
 import yt_dlp as youtube_dl
 
-from email.utils import parseaddr
-
 class AudioDownloader:
     download_count = 0
 

@@ -5,6 +5,4 @@ certifi
 tornado>=5.1
 yt-dlp
 ffmpeg
-PhantomJS
-mysql-connector-python>=8.0.19
 PyCryptodome

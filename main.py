@@ -81,7 +81,7 @@ async def reset(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         account = db_manager.get_account(update.effective_chat.id)
-        downloader = AudioDownloader(update.message.text, db_manager.get_account(update.effective_chat.id))
+        downloader = AudioDownloader(update.message.text, account)
     except exceptions.DatabaseSelectError:
         await context.bot.send_message(chat_id=update.effective_chat.id,
                                        text="⚠️ You need to register first. Use /register <email> <password>.")

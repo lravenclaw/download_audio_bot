@@ -20,6 +20,6 @@ Bot can download and send you audio from different youtube videos.
 
 
 4. Start app:
- ```bash
+   ```bash
    python3 main.py
    ```
